@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:ui';
 
+import 'package:e_commerce_app/nav_bar/home_nav.dart';
 import 'package:e_commerce_app/nav_bar/order_page.dart';
 import 'package:e_commerce_app/widget/common_widget.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
         //print('${sharedPreferences.getString('token')}');
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
-              builder: (context) => OrderPage(),
+              builder: (context) => HomeNav(),
             ),
             (route) => false);
       } else {

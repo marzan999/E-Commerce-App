@@ -12,8 +12,16 @@ class OrderPage extends StatefulWidget {
 class _OrderPageState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.yellow,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.yellow,
+        body: Center(
+          child: Text(
+            'Order Page..',
+            style: TextStyle(fontSize: 50),
+          ),
+        ),
+      ),
     );
   }
 }

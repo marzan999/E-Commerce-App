@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (sharedPreferences.getString('token') != null) {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
-            builder: (context) => OrderPage(),
+            builder: (context) => LoginPage(),
           ),
           (route) => false);
     } else {
