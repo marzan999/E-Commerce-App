@@ -1,7 +1,11 @@
+import 'dart:convert';
 import 'dart:ui';
 
+import 'package:e_commerce_app/widget/common_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -14,6 +18,36 @@ class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  getLogin() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+
+    var link = '${baseUrl}sign-in';
+
+    var map = Map<String, dynamic>();
+    map['email'] = emailController.text.toString();
+    map['password'] = passwordController.text.toString();
+
+    var response = await http.post(Uri.parse(link), body: map);
+
+    // print('${response.body}');
+
+    var data = jsonDecode(response.body);
+    //print('${data['access_token']}');
+
+    if (data['access_token'] != null) {
+      sharedPreferences.setString('token', data['access_token']);
+      print('${sharedPreferences.getString('token')}');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +67,9 @@ class _LoginPageState extends State<LoginPage> {
                     child: Text(
                       "Welcome",
                       style: GoogleFonts.pacifico(
-                          fontSize: 40, fontWeight: FontWeight.bold),
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 99, 150, 145)),
                     ),
                   ),
                   SizedBox(
@@ -126,6 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: InkWell(
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
+                          getLogin();
                           // Navigator.of(context).push(
                           //     MaterialPageRoute(builder: (context) => Page2()));
                         } else {
