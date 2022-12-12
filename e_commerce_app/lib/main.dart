@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/nav_bar/home_nav.dart';
 import 'package:e_commerce_app/provider/catagory_provider.dart';
 import 'package:e_commerce_app/provider/order_provider.dart';
 import 'package:e_commerce_app/screens/auth/login_page.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: HomeNav(),
       ),
     );
   }

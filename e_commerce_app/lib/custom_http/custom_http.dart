@@ -39,7 +39,7 @@ class CustomeHttpRequest {
     var responce = await http.get(Uri.parse(uri),
         headers: await CustomeHttpRequest.getHeaderWithToken());
     var data = jsonDecode(responce.body);
-    print("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww${data}");
+
     for (var i in data) {
       categoryModel = CategoryModel.fromJson(i);
       categoryList.add(categoryModel);
