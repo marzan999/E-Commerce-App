@@ -17,7 +17,7 @@ class HomeNav extends StatefulWidget {
 class _HomeNavState extends State<HomeNav> {
   final myPages = [
     OrderPage(),
-    CatagoryPage(),
+    CategoryPage(),
     ProductPage(),
     ProfilePage(),
   ];

@@ -1,26 +1,39 @@
+import 'package:e_commerce_app/provider/catagory_provider.dart';
+import 'package:e_commerce_app/widget/common_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
 
-class CatagoryPage extends StatefulWidget {
-  const CatagoryPage({super.key});
+class CategoryPage extends StatefulWidget {
+  const CategoryPage({Key? key}) : super(key: key);
 
   @override
-  State<CatagoryPage> createState() => _CatagoryPageState();
+  State<CategoryPage> createState() => _CategoryPageState();
 }
 
-class _CatagoryPageState extends State<CatagoryPage> {
+class _CategoryPageState extends State<CategoryPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    Provider.of<CategoryProvider>(context, listen: false).getCategoryData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.orange,
-        body: Center(
-          child: Text(
-            'Catagory Page..',
-            style: TextStyle(fontSize: 50),
-          ),
-        ),
+    final categoryList = Provider.of<CategoryProvider>(context).categoryList;
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: GridView.builder(
+            itemCount: categoryList.length,
+            shrinkWrap: true,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, mainAxisSpacing: 23, crossAxisSpacing: 20),
+            itemBuilder: (context, index) {
+              return Container(
+                height: 100,
+                child: Image.network("${imageUrl}${categoryList[index].image}"),
+              );
+            }),
       ),
     );
   }

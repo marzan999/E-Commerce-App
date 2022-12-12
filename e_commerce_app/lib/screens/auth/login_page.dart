@@ -46,7 +46,10 @@ class _LoginPageState extends State<LoginPage> {
       map['email'] = emailController.text.toString();
       map['password'] = passwordController.text.toString();
 
-      var response = await http.post(Uri.parse(link), body: map);
+      var response = await http.post(
+        Uri.parse(link),
+        body: map,
+      );
 
       // print('${response.body}');
 
