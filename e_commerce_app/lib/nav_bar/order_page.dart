@@ -27,118 +27,151 @@ class _OrderPageState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
     final orderList = Provider.of<OrderProvider>(context).orderList;
-    return Scaffold(
-      appBar: AppBar(
-        // backgroundColor: AppColor.kbgcolor,
-        elevation: 0,
-        title: Text(
-          "Order",
-          style: TextStyle(color: Colors.white, fontSize: 26),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 154, 180, 178),
+          // backgroundColor: AppColor.kbgcolor,
+          elevation: 0,
+          title: Text(
+            "Order",
+            style: TextStyle(color: Colors.black, fontSize: 26),
+          ),
+          centerTitle: true,
         ),
-        centerTitle: true,
-      ),
-      body: orderList.isEmpty
-          ? spinkit
-          : SingleChildScrollView(
-              child: Column(
-                children: [
-                  ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: orderList.length,
-                      itemBuilder: (context, index) {
-                        var clr = orderList[index]
-                            .orderStatus!
-                            .orderStatusCategory!
-                            .id;
-                        return Padding(
-                          padding:
-                              EdgeInsets.only(top: 10, left: 10, right: 10),
-                          child: Center(
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                  top: 15, left: 15, right: 15, bottom: 15),
-                              height: 100,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black54,
-                                    offset: const Offset(
-                                      5.0,
-                                      5.0,
-                                    ), //Offset
-                                    blurRadius: 10.0,
-                                    spreadRadius: 2.0,
-                                  ), //BoxShadow
-                                  BoxShadow(
-                                    color: Colors.white,
-                                    offset: const Offset(0.0, 0.0),
-                                    blurRadius: 0.0,
-                                    spreadRadius: 0.0,
-                                  ), //BoxShadow
-                                ],
-                              ),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                          flex: 2,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Icon(
-                                                clr == 1
-                                                    ? Icons.snowmobile_sharp
-                                                    : clr == 2
-                                                        ? Icons.abc
-                                                        : Icons
-                                                            .zoom_in_map_sharp,
-                                                color: clr == 1
-                                                    ? Colors.red
-                                                    : clr == 2
-                                                        ? Colors.green
-                                                        : Colors.blue,
-                                              ),
-                                              Text(
-                                                "Order Id: " +
-                                                    orderList[index]
-                                                        .id
-                                                        .toString(),
-                                              ),
-                                            ],
-                                          )),
-                                      Expanded(
-                                          flex: 2,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Name:${orderList[index].user!.name} ",
-                                              ),
-                                              SizedBox(
-                                                height: 25,
-                                              ),
-                                              Text(
-                                                "Price: ${orderList[index].price}",
-                                              ),
-                                            ],
-                                          )),
-                                    ],
-                                  ),
-                                ],
+        body: orderList.isEmpty
+            ? spinkit
+            : SingleChildScrollView(
+                child: Column(
+                  children: [
+                    ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: orderList.length,
+                        itemBuilder: (context, index) {
+                          var clr = orderList[index]
+                              .orderStatus!
+                              .orderStatusCategory!
+                              .id;
+                          return Padding(
+                            padding:
+                                EdgeInsets.only(top: 15, left: 20, right: 20),
+                            child: Center(
+                              child: Container(
+                                padding: EdgeInsets.only(
+                                    top: 15, left: 15, right: 15, bottom: 15),
+                                height: 150,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Color.fromARGB(255, 240, 236, 236),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color.fromARGB(255, 199, 191, 115),
+                                      offset: const Offset(
+                                        5.0,
+                                        5.0,
+                                      ), //Offset
+                                      blurRadius: 10.0,
+                                      spreadRadius: 2.0,
+                                    ), //BoxShadow
+                                    BoxShadow(
+                                      color: Colors.white,
+                                      offset: const Offset(0.0, 0.0),
+                                      blurRadius: 0.0,
+                                      spreadRadius: 0.0,
+                                    ), //BoxShadow
+                                  ],
+                                ),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                            flex: 2,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                // Icon(
+                                                //   clr == 1
+                                                //       ? Icons.snowmobile_sharp
+                                                //       : clr == 2
+                                                //           ? Icons.abc
+                                                //           : Icons
+                                                //               .zoom_in_map_sharp,
+                                                //   color: clr == 1
+                                                //       ? Colors.red
+                                                //       : clr == 2
+                                                //           ? Colors.green
+                                                //           : Colors.blue,
+                                                // ),
+
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      'Name     :  ',
+                                                      style: TextStyle(
+                                                          fontSize: 20),
+                                                    ),
+                                                    Text(
+                                                      "${orderList[index].user!.name} ",
+                                                      style: TextStyle(
+                                                          fontSize: 30),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      'Order ID :  ',
+                                                      style: TextStyle(
+                                                          fontSize: 20),
+                                                    ),
+                                                    Text(
+                                                      orderList[index]
+                                                          .id
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                          fontSize: 30),
+                                                    ),
+                                                  ],
+                                                ),
+
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      'Price      :  ',
+                                                      style: TextStyle(
+                                                          fontSize: 20),
+                                                    ),
+                                                    Text(
+                                                      "${orderList[index].price} taka only",
+                                                      style: TextStyle(
+                                                          fontSize: 30),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            )),
+                                        // Expanded(
+                                        //     flex: 2,
+                                        //     child: Column(
+                                        //       crossAxisAlignment:
+                                        //           CrossAxisAlignment.start,
+                                        //       children: [],
+                                        //     )),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      })
-                ],
+                          );
+                        })
+                  ],
+                ),
               ),
-            ),
+      ),
     );
   }
 }

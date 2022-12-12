@@ -46,9 +46,9 @@ class _HomeNavState extends State<HomeNav> {
           Icon(Icons.computer_outlined, size: 30),
           Icon(Icons.person, size: 30),
         ],
-        color: Colors.white,
+        color: Color.fromARGB(255, 215, 218, 217),
         buttonBackgroundColor: Colors.white,
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromARGB(255, 105, 153, 148),
         animationCurve: Curves.easeInOut,
         animationDuration: Duration(milliseconds: 600),
         onTap: (index) {
