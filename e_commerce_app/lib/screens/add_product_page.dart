@@ -49,7 +49,7 @@ class _AddProductState extends State<AddProduct> {
       var responce = await request.send();
       var responceData = await responce.stream.toBytes();
       var responceString = String.fromCharCodes(responceData);
-      print("responce bodyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy ${responceString}");
+      //print("${responceString}");
       print(
           "Status code issss${responce.statusCode} ${request.fields} ${request.files.toString()}");
       if (responce.statusCode == 201) {
@@ -131,46 +131,32 @@ class _AddProductState extends State<AddProduct> {
                       ),
                     ),
                   ),
-
                   SizedBox(
                     height: 20,
                   ),
                   TextField(
                     controller: nameController,
                     decoration: InputDecoration(hintText: 'Enter Product Name'),
-                    // labelText: "Enter product Name",
-                    // icon: Icons.abc,
                   ),
                   TextField(
                     controller: orginalPriceController,
                     decoration:
                         InputDecoration(hintText: 'Enter Product Price'),
-                    // labelText: "Enter product Price",
-                    // icon: Icons.price_change,
                   ),
                   TextField(
                     controller: discountPriceController,
                     decoration:
                         InputDecoration(hintText: 'Enter Discount Price'),
-                    // labelText: "Enter Discount Price",
-                    // icon: Icons.abc,
                   ),
                   TextField(
                     controller: quantityController,
                     decoration:
                         InputDecoration(hintText: 'Enter Product Quantity'),
-                    // labelText: "Enter Quantity",
-                    // icon: Icons.abc,
                   ),
-                  // customButton("Add Product", () {
-                  //   uploadProduct();
-                  // })
                   SizedBox(
                     height: 20,
                   ),
-
                   Stack(
-                    //overflow: Overflow.visible,
                     children: [
                       Container(
                         height: 150,

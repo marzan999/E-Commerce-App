@@ -14,11 +14,42 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.green,
+        appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 154, 180, 178),
+          elevation: 0,
+          title: Text(
+            "Profile",
+            style: TextStyle(color: Colors.black, fontSize: 26),
+          ),
+          centerTitle: true,
+        ),
         body: Center(
-          child: Text(
-            'Profile Page..',
-            style: TextStyle(fontSize: 50),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 130,
+              ),
+              CircleAvatar(
+                backgroundColor: Colors.grey,
+                radius: 105,
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9EHCSxyu5CGknIbhjR_Zrti0M9ucmdTlgBx5vyhIwAl9Yk1GqAOCipRpj0_UVFfkApH4&usqp=CAU"), //NetworkImage
+                  radius: 100,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Name: Alex',
+                style: TextStyle(fontSize: 25),
+              ),
+              Text(
+                'Age: 32',
+                style: TextStyle(fontSize: 25),
+              ),
+            ],
           ),
         ),
       ),
