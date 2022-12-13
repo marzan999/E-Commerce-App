@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/provider/product_page.dart';
+import 'package:e_commerce_app/screens/add_product_page.dart';
 import 'package:e_commerce_app/widget/common_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,7 +15,6 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends State<ProductPage> {
   @override
   void initState() {
-    // TODO: implement initState
     Provider.of<ProductProvider>(context, listen: false).getProductData();
     super.initState();
   }
@@ -25,12 +25,13 @@ class _ProductPageState extends State<ProductPage> {
     return SafeArea(
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Color.fromARGB(255, 187, 109, 183),
           onPressed: () {
-            //   Navigator.of(context)
-            //       .push(MaterialPageRoute(builder: (context) => AddProduct()))
-            //       .then((value) =>
-            //           Provider.of<ProductProvider>(context, listen: false)
-            //               .getProductData());
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => AddProduct()))
+                .then((value) =>
+                    Provider.of<ProductProvider>(context, listen: false)
+                        .getProductData());
           },
           child: Icon(Icons.add),
         ),
@@ -95,9 +96,7 @@ class _ProductPageState extends State<ProductPage> {
                                   .quantity
                                   .toString(),
                           style: TextStyle(
-                              //  color: AppColor.kbgcolor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700),
+                              fontSize: 20, fontWeight: FontWeight.w700),
                         ),
                         Text(
                           "  Price: " +
@@ -106,9 +105,7 @@ class _ProductPageState extends State<ProductPage> {
                                   .originalPrice
                                   .toString(),
                           style: TextStyle(
-                              //  color: AppColor.kbgcolor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700),
+                              fontSize: 20, fontWeight: FontWeight.w700),
                         ),
                         Text(
                           "  Discount Price: " +
@@ -117,10 +114,38 @@ class _ProductPageState extends State<ProductPage> {
                                   .discountedPrice
                                   .toString(),
                           style: TextStyle(
-                              // color: AppColor.kbgcolor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700),
+                              fontSize: 20, fontWeight: FontWeight.w700),
                         ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Container(
+                              height: 30,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 172, 190, 172),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Center(
+                                  child: Icon(
+                                Icons.edit,
+                              )),
+                            ),
+                            Container(
+                              height: 30,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 172, 190, 172),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Center(
+                                  child: Icon(
+                                Icons.delete,
+                              )),
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   );
