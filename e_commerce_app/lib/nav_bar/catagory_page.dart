@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/provider/catagory_provider.dart';
 import 'package:e_commerce_app/widget/common_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -53,6 +54,7 @@ class _CategoryPageState extends State<CategoryPage> {
                             child: Stack(
                               children: [
                                 Container(
+                                  height: 150,
                                   decoration: BoxDecoration(
                                       image: DecorationImage(
                                           image: NetworkImage(
@@ -75,13 +77,55 @@ class _CategoryPageState extends State<CategoryPage> {
                               ],
                             )),
                         Expanded(
-                            flex: 1,
+                            flex: 3,
                             child: Container(
                               child: Center(
-                                  child: Text(
-                                '${categoryList[index].name}',
-                                style: TextStyle(
-                                    fontSize: 25, color: Colors.black),
+                                  child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    '${categoryList[index].name}',
+                                    style: GoogleFonts.acme(
+                                        fontSize: 30, color: Colors.teal),
+                                  ),
+                                  SizedBox(
+                                    height: 7,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Container(
+                                        height: 30,
+                                        width: 50,
+                                        decoration: BoxDecoration(
+                                            color: Color.fromARGB(
+                                                255, 172, 190, 172),
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Center(
+                                            child: Icon(
+                                          Icons.edit,
+                                        )),
+                                      ),
+                                      Container(
+                                        height: 30,
+                                        width: 50,
+                                        decoration: BoxDecoration(
+                                            color: Color.fromARGB(
+                                                255, 172, 190, 172),
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Center(
+                                            child: Icon(
+                                          Icons.delete,
+                                        )),
+                                      ),
+                                    ],
+                                  )
+                                ],
                               )),
                             )),
                       ],
