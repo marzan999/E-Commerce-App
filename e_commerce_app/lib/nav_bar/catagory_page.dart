@@ -77,7 +77,6 @@ class _CategoryPageState extends State<CategoryPage> {
                         Expanded(
                             flex: 1,
                             child: Container(
-                              // color: Colors.yellow,
                               child: Center(
                                   child: Text(
                                 '${categoryList[index].name}',
@@ -95,10 +94,3 @@ class _CategoryPageState extends State<CategoryPage> {
     );
   }
 }
-
-
-
-// child:
-//                       Image.network("${imageUrl}${categoryList[index].image}"),
-
-  // padding: const EdgeInsets.only(left: 20, right: 20),
